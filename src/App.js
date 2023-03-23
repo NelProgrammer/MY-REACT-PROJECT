@@ -1,7 +1,7 @@
 import React from 'react'; // You only need this for compatibility with old React Code
 import ExpensesDisplay from './components/Logic/ExpensesDisplay';
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -35,6 +35,6 @@ function App() {
       <ExpensesDisplay expenses={expenses} />
     </div>
   );
-}
+};
 
 export default App;
