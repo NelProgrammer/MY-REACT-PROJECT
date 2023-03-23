@@ -1,7 +1,7 @@
 import React from 'react'; // You only need this for compatibility with old React Code
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
-import Card from './Card';
+import Card from '../UI/Card';
 
 function ExpenseItem(props) {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'; // You only need this for compatibility with old React Code
-import ExpensesDisplay from './components/ExpensesDisplay';
+import ExpensesDisplay from './components/Logic/ExpensesDisplay';
 
 function App() {
   const expenses = [
