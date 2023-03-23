@@ -1,6 +1,8 @@
+import React from 'react'; // You only need this for compatibility with old React Code
 import './ExpensesDisplay.css';
 import ExpenseItem from './ExpenseItem';
 import Card from './Card';
+
 function ExpensesDisplay(props) {
   return (
     <Card className="expenses">
