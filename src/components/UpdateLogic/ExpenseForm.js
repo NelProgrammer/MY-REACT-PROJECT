@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState(''); // Start with no values
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
-  const [enteredFormData, setEnteredFormData] = useState('');
-
+  // You can chose between individual state or agreegated.
+  //   const [enteredTitle, setEnteredTitle] = useState(''); // Start with no values
+  //   const [enteredAmount, setEnteredAmount] = useState('');
+  //   const [enteredDate, setEnteredDate] = useState('');
+  //   const [enteredFormData, setEnteredFormData] = useState('');
+  const [userInput, setUserInput] = useState({
+    enteredTitle: '',
+    setEnteredAmount: '',
+    setEnteredDate: '',
+  });
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    // setEnteredTitle(event.target.value);
+    setUserInput({ ...userInput, enteredTitle: event.target.value }); /// Destruction is to retain other state values ...userInput
   };
 
   const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
+    // setEnteredAmount(event.target.value);
+    setUserInput({ ...userInput, setEnteredAmount: event.target.value });
   };
 
   const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+    // setEnteredDate(event.target.value);
+    setUserInput({ ...userInput, setEnteredDate: event.target.value });
   };
 
   const clickHandler = (event) => {
-    setEnteredFormData(enteredAmount & ',' & enteredTitle & ',' & enteredDate);
-    console.log(event.target);
+    // setEnteredFormData(enteredAmount & ',' & enteredTitle & ',' & enteredDate);
+    // console.log(event.target);
   };
 
   return (
