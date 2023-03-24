@@ -1,5 +1,6 @@
 import React from 'react'; // You only need this for compatibility with old React Code
 import ExpensesDisplay from './components/Logic/ExpensesDisplay';
+import NewExpense from './components/UpdateLogic/NewExpense';
 
 const App = () => {
   const expenses = [
@@ -31,7 +32,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense />
       <ExpensesDisplay expenses={expenses} />
     </div>
   );
