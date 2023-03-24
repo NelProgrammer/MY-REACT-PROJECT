@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //   You can chose between individual state or agreegated.
   const [enteredTitle, setEnteredTitle] = useState(''); // Start with no values
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -38,6 +38,7 @@ const ExpenseForm = () => {
     };
 
     console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
