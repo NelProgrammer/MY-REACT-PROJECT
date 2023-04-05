@@ -1,7 +1,6 @@
 import React from 'react'; // You only need this for compatibility with old React Code
 import ExpensesDisplay from './components/Logic/ExpensesDisplay';
 import NewExpense from './components/UpdateLogic/NewExpense';
-import ExpensesFilter from './components/FilterLogic/ExpensesFilter';
 
 const App = () => {
   const expenses = [
@@ -38,7 +37,6 @@ const App = () => {
 
   return (
     <div>
-      <ExpensesFilter />
       <NewExpense onAddExpense={addExpenseHandler} />
       <ExpensesDisplay expenses={expenses} />
     </div>
