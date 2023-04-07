@@ -3,20 +3,20 @@ import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
-  const saveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseData = {
-      ...enteredExpenseData,
-      id: Math.random().toString(),
+  const saveExpenseInputDataHandler = (formInputExpenseData) => {
+    const expenseInputData = {
+      id: Math.floor(Math.random() * 100 - 1).toString(),
+      ...formInputExpenseData,
     };
 
     console.log('In NewExpense.js');
-    console.log(expenseData);
-    props.onAddExpense(expenseData);
+    console.log(expenseInputData);
+    props.onAddExpense(expenseInputData);
   };
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm onSaveExpenseInputData={saveExpenseInputDataHandler} />
     </div>
   );
 };

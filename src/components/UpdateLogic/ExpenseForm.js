@@ -28,25 +28,25 @@ const ExpenseForm = (props) => {
     // setUserInput({ ...userInput, setEnteredDate: event.target.value });
   };
 
-  const submitHandler = (event) => {
+  const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    const expenseData = {
+    const formInputExpenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
 
     console.log('In Form.js');
-    console.log(expenseData);
-    props.onSaveExpenseData(expenseData);
+    console.log(formInputExpenseData);
+    props.onSaveExpenseInputData(formInputExpenseData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={formSubmitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
