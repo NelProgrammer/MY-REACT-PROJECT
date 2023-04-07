@@ -22,7 +22,7 @@ const ExpensesDisplay = (props) => {
           onFilterYearData={dropDownFilterChange}
         />
         <p>{yearChange}</p>
-        {props.expenses.map((expenseItem) => (
+        {props.expenseItems.map((expenseItem) => (
           <ExpenseItem
             title={expenseItem.title}
             amount={expenseItem.amount}
