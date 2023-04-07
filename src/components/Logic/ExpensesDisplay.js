@@ -24,6 +24,7 @@ const ExpensesDisplay = (props) => {
         <p>{yearChange}</p>
         {props.expenseItems.map((expensesItem) => (
           <ExpenseItem
+            key={expensesItem.id}
             title={expensesItem.title}
             amount={expensesItem.amount}
             date={expensesItem.date}
