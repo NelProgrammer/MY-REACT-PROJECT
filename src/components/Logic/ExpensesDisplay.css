@@ -5,3 +5,14 @@
   width: 50rem;
   max-width: 95%;
 }
+
+.error_msg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #757373;
+  max-width: fit-content;
+  border: 0.3cqmax solid rgb(83, 48, 48);
+}

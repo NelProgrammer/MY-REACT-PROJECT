@@ -32,14 +32,18 @@ const ExpensesDisplay = (props) => {
         />
         <p>{yearChange}</p>
         {
-          filterProps.map((expensesItem) => (
-            <ExpenseItem
-              key={expensesItem.id}
-              title={expensesItem.title}
-              amount={expensesItem.amount}
-              date={expensesItem.date}
-            />
-          ))
+          filterProps.length === 0 ? (
+            <p className="error_msg">No Expenses Found</p>
+          ) : (
+            filterProps.map((expensesItem) => (
+              <ExpenseItem
+                key={expensesItem.id}
+                title={expensesItem.title}
+                amount={expensesItem.amount}
+                date={expensesItem.date}
+              />
+            ))
+          )
           //.filter((expensesItem) => expensesItem.date === { yearChange })
         }
       </Card>
