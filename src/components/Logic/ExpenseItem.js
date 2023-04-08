@@ -4,6 +4,7 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = (props) => {
+  // eslint-disable-next-line no-unused-vars
   const [title, setChangeTitle] = useState(props.title);
 
   const clickChangeTitleHandler = () => {

@@ -13,6 +13,15 @@ const ExpensesDisplay = (props) => {
     console.log(' - Selected Year Filder Data:' + selectedYearFilterData);
     console.log(' - yearChange - after setHook:' + yearChange); // Data Copy is avaiable only on return/rerendeing not now and also available when you resend it down beanstalf
   };
+  const getDateFullYear = (dateObj) => dateObj.getFullYear().toString();
+  const isFullYear = (dataYear, filterYear) =>
+    (filterYear === '') | !filterYear
+      ? true
+      : getDateFullYear(dataYear) === filterYear;
+
+  const filterProps = props.expenseItems.filter((expItem) =>
+    isFullYear(expItem.date, yearChange)
+  );
   return (
     <div>
       <Card className="expenses">
@@ -22,14 +31,17 @@ const ExpensesDisplay = (props) => {
           onFilterYearData={dropDownFilterChange}
         />
         <p>{yearChange}</p>
-        {props.expenseItems.map((expensesItem) => (
-          <ExpenseItem
-            key={expensesItem.id}
-            title={expensesItem.title}
-            amount={expensesItem.amount}
-            date={expensesItem.date}
-          />
-        ))}
+        {
+          filterProps.map((expensesItem) => (
+            <ExpenseItem
+              key={expensesItem.id}
+              title={expensesItem.title}
+              amount={expensesItem.amount}
+              date={expensesItem.date}
+            />
+          ))
+          //.filter((expensesItem) => expensesItem.date === { yearChange })
+        }
       </Card>
     </div>
   );
