@@ -31,10 +31,11 @@ const ExpensesDisplay = (props) => {
           onFilterYearData={dropDownFilterChange}
         />
         <p>{yearChange}</p>
+        {filterProps.length === 0 && (
+          <p className="error_msg">No Expenses Found</p>
+        )}
         {
-          filterProps.length === 0 ? (
-            <p className="error_msg">No Expenses Found</p>
-          ) : (
+          filterProps.length > 0 &&
             filterProps.map((expensesItem) => (
               <ExpenseItem
                 key={expensesItem.id}
@@ -43,7 +44,6 @@ const ExpensesDisplay = (props) => {
                 date={expensesItem.date}
               />
             ))
-          )
           //.filter((expensesItem) => expensesItem.date === { yearChange })
         }
       </Card>
