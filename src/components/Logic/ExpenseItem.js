@@ -17,7 +17,7 @@ const ExpenseItem = (props) => {
 
       setChangeTitle(changeTitleTo); // The one problem is this doesnt send the data up the beanstalk to be updated.
 
-      ///props.onSaveExpenseInputData(formInputExpenseData);
+      ///props.onSaveExpenseInputData(formInputExpenseData); // Inspiration at NewForm where this function is used to send data up the beanstalk.
     }
   };
 

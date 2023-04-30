@@ -1,8 +1,9 @@
 import React, { useState } from 'react'; // You only need this for compatibility with old React Code
 import './ExpensesDisplay.css';
-import ExpenseItem from './ExpenseItem';
+//import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import ExpensesFilter from '../FilterLogic/ExpensesFilter';
+import ExpensesList from './ExpensesList';
 
 const ExpensesDisplay = (props) => {
   const [yearChange, setYearChange] = useState('2022');
@@ -16,22 +17,10 @@ const ExpensesDisplay = (props) => {
       ? true
       : getDateFullYear(dataYear) === filterYear;
 
-  const filteredExpensesProps = props.expenseItems.filter((expItem) =>
+  const filteredExpenses = props.expenseItems.filter((expItem) =>
     isFullYear(expItem.date, yearChange)
   );
 
-  let expensesContent = '';
-  const displayFGilteredExpenses = (expensesContent) =>
-    filteredExpensesProps.length > 0
-      ? (expensesContent = filteredExpensesProps.map((expensesItem) => (
-          <ExpenseItem
-            key={expensesItem.id}
-            title={expensesItem.title}
-            amount={expensesItem.amount}
-            date={expensesItem.date}
-          />
-        )))
-      : (expensesContent = <p className="error_msg">No Expenses Found</p>);
   return (
     <div>
       <Card className="expenses">
@@ -41,7 +30,7 @@ const ExpensesDisplay = (props) => {
           onFilterYearData={dropDownFilterChange}
         />
         <p>{yearChange}</p>
-        {displayFGilteredExpenses(expensesContent)}
+        <ExpensesList expensesItems={filteredExpenses} />
       </Card>
     </div>
   );
