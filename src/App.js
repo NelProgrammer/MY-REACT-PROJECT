@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; // You only need this for compatibility with old React Code
 import ExpensesDisplay from './components/Logic/ExpensesDisplay';
-import NewExpense from './components/UpdateLogic/NewExpense';
+//import NewExpense from './components/UpdateLogic/NewExpense';
+import PopAddNewExpense from './components/UpdateLogic/PopAddNewExpense';
 
 const INITIAL_EXPENSES = [
   {
@@ -28,19 +29,11 @@ const INITIAL_EXPENSES = [
     date: new Date(2021, 5, 12),
   },
 ];
-
-const App = () => {
+const App = (props) => {
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
-
-  const addExpenseHandler = (newExpenseItem) => {
-    setExpenses((prevExpenses) => {
-      return [newExpenseItem, ...prevExpenses];
-    });
-  };
-  console.log(expenses);
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <PopAddNewExpense />
       <ExpensesDisplay expenseItems={expenses} />
     </div>
   );
