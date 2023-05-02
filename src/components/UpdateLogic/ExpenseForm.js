@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
+import PopAddNewExpense from './PopAddNewExpense';
 
 const ExpenseForm = (props) => {
   //   You can chose between individual state or agreegated.
@@ -45,6 +46,14 @@ const ExpenseForm = (props) => {
     setEnteredDate('');
   };
 
+  const formCancelHandler = (event) => {
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
+
+    return <PopAddNewExpense />;
+  };
+
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="new-expense__controls">
@@ -78,6 +87,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={formCancelHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
