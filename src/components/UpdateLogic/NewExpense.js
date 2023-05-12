@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
+  console.log('In NewExpense.js');
+  const [expenseInputData, setExpenseInputData] = useState();
   const saveExpenseInputDataHandler = (formInputExpenseData) => {
-    const expenseInputData = {
-      id: Math.floor(Math.random() * 1000 - 1).toString(),
-      ...formInputExpenseData,
-    };
-
-    console.log('In NewExpense.js');
-    console.log(expenseInputData);
-    props.onAddExpense(expenseInputData);
+    setExpenseInputData((expenseInputData) => {
+      if (
+        (formInputExpenseData.title === '') |
+        (formInputExpenseData.amount === '')
+      ) {
+        console.log('No Data to send');
+      } else {
+        expenseInputData = {
+          id: Math.floor(Math.random() * 1000 - 1).toString(),
+          ...formInputExpenseData,
+        };
+      }
+      console.log(expenseInputData);
+      props.onAddExpense(expenseInputData);
+    });
   };
 
   return (

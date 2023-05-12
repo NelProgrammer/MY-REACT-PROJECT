@@ -3,13 +3,14 @@ import './PopAddNewExpense.css';
 import NewExpense from './NewExpense';
 
 const PopAddNewExpense = (props) => {
-  const [expenses, setExpenses] = useState(props.expenses);
+  const [expenses, setExpenses] = useState(props.expenseItems);
+  //let mySetExpenses = {};
 
-  const addExpenseHandler = (newExpenseItem) => {
-    setExpenses((prevExpenses) => {
-      return [newExpenseItem, ...prevExpenses];
-    });
+  const addExpenseHandler = (expenses) => {
+    setExpenses(expenses);
+    props.onAddNewExpense(expenses);
   };
+
   const showNewExpenseForm = () => {
     setDisplayComponent(() => <NewExpense onAddExpense={addExpenseHandler} />);
   };

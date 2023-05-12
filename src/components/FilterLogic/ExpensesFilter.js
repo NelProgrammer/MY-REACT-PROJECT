@@ -12,6 +12,8 @@ const ExpensesFilter = (props) => {
       <div className="expenses-filter__control">
         <label>Filter by year: {props.selectedYear}</label>
         <select value={props.selectedYear} onChange={dropDownChangeHandler}>
+          <option value="All">All</option>
+          <option value="2023">2023</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -23,3 +25,35 @@ const ExpensesFilter = (props) => {
 };
 
 export default ExpensesFilter;
+
+// const YearsFilterList = () => {
+//   if (props.expensesItems.length === 0) {
+//     return (
+//       <div className="expenses-filter">
+//         <div className="expenses-filter__control">
+//           <label>Filter by year: {props.selectedYear}</label>
+//           <select value={props.selectedYear} onChange={dropDownChangeHandler}>
+//             <option value="All">All</option>;
+//             <option value="---"> --- </option>;
+//           </select>
+//         </div>
+//       </div>
+//     );
+//   } else {
+//     return (
+//       <div className="expenses-filter">
+//         <div className="expenses-filter__control">
+//           <label>Filter by year: {props.selectedYear}</label>
+//           <select value={props.selectedYear} onChange={dropDownChangeHandler}>
+//             <option value="All">All</option>;
+//             {props.expensesItems.map((expensesSingleItem) => (
+//               <option value={expensesSingleItem.date.getFullYear()}>
+//                 {expensesSingleItem.date.getFullYear()}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//       </div>
+//     );
+//   }
+// };

@@ -31,9 +31,24 @@ const INITIAL_EXPENSES = [
 ];
 const App = (props) => {
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+
+  const addNewExpenseHandler = (newExpenseItem) => {
+    setExpenses((prevExpenses) => {
+      if (!newExpenseItem) {
+        return prevExpenses;
+      } else {
+        prevExpenses = [newExpenseItem, ...prevExpenses];
+        return prevExpenses;
+      }
+    });
+  };
+
   return (
     <div>
-      <PopAddNewExpense />
+      <PopAddNewExpense
+        expenseItems={expenses}
+        onAddNewExpense={addNewExpenseHandler}
+      />
       <ExpensesDisplay expenseItems={expenses} />
     </div>
   );

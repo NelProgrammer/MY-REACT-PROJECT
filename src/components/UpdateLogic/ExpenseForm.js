@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 import PopAddNewExpense from './PopAddNewExpense';
+import App from '../../App';
 
 const ExpenseForm = (props) => {
   //   You can chose between individual state or agreegated.
   const [enteredTitle, setEnteredTitle] = useState(''); // Start with no values
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
-  // const [enteredFormData, setEnteredFormData] = useState('');
-  //   const [userInput, setUserInput] = useState({
-  //     enteredTitle: '',
-  //     setEnteredAmount: '',
-  //     setEnteredDate: '',
-  //   });
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -30,28 +25,30 @@ const ExpenseForm = (props) => {
   };
 
   const formSubmitHandler = (event) => {
-    event.preventDefault();
+    console.log('In Form.js => Submit Handler  ');
 
+    console.log(event.target);
+    event.preventDefault();
     const formInputExpenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-
-    console.log('In Form.js');
-    console.log(formInputExpenseData);
-    props.onSaveExpenseInputData(formInputExpenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
-  };
-
-  const formCancelHandler = (event) => {
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
-
-    return <PopAddNewExpense />;
+    if (
+      (formInputExpenseData.title === '') |
+      (formInputExpenseData.amount === '') |
+      (formInputExpenseData.amount === 0) |
+      isNaN(formInputExpenseData.date)
+    ) {
+      console.log('In Form.js => No Titlle/Amount');
+    } else {
+      console.log('In Form.js => Correct Titlle/Amount');
+      console.log(formInputExpenseData);
+      props.onSaveExpenseInputData(formInputExpenseData);
+      setEnteredTitle('');
+      setEnteredAmount('');
+      setEnteredDate('');
+    }
   };
 
   return (
@@ -80,14 +77,16 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2021-01-01"
-            max="2023-03-24"
+            max="2023-05-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button onClick={formCancelHandler}>Cancel</button>
+        <button type="abort" onAbort={() => <App />}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
