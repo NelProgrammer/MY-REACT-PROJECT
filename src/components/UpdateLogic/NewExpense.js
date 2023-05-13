@@ -9,9 +9,11 @@ const NewExpense = (props) => {
     setExpenseInputData((expenseInputData) => {
       if (
         (formInputExpenseData.title === '') |
-        (formInputExpenseData.amount === '')
+        (formInputExpenseData.amount === '') |
+        isNaN(formInputExpenseData.date)
       ) {
         console.log('No Data to send');
+        props.onHideExpense();
       } else {
         expenseInputData = {
           id: Math.floor(Math.random() * 1000 - 1).toString(),
@@ -23,9 +25,16 @@ const NewExpense = (props) => {
     });
   };
 
+  const cancelExpenseInputDataHandler = () => {
+    console.log('Canceled');
+    props.onHideExpense();
+  };
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseInputData={saveExpenseInputDataHandler} />
+      <ExpenseForm
+        onSaveExpenseInputData={saveExpenseInputDataHandler}
+        onCancelExpenseInputData={cancelExpenseInputDataHandler}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 import PopAddNewExpense from './PopAddNewExpense';
+import ExpensesDisplay from '../Logic/ExpensesDisplay';
 import App from '../../App';
 
 const ExpenseForm = (props) => {
@@ -24,11 +25,20 @@ const ExpenseForm = (props) => {
     // setUserInput({ ...userInput, setEnteredDate: event.target.value });
   };
 
-  const formSubmitHandler = (event) => {
-    console.log('In Form.js => Submit Handler  ');
-
-    console.log(event.target);
+  const formCancelHandler = (event) => {
     event.preventDefault();
+    console.log('In Form.js => Cancel Handler  ');
+    console.log(event.target);
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
+    props.onCancelExpenseInputData();
+  };
+
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log('In Form.js => Submit Handler  ');
+    console.log(event.target);
     const formInputExpenseData = {
       title: enteredTitle,
       amount: enteredAmount,
@@ -84,7 +94,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="abort" onAbort={() => <App />}>
+        <button type="button" onClick={formCancelHandler}>
           Cancel
         </button>
         <button type="submit">Add Expense</button>
