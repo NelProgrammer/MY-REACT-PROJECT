@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
+  const [editMode, setEditMode] = useState(false);
+
+  const handleStartEdit = () => {
+    setEditMode(true);
+  };
+  const handleEndEdit = () => {
+    setEditMode(false);
+  };
+
   const saveExpenseInputDataHandler = (formInputExpenseData) => {
     const expenseInputData = {
       id: Math.floor(Math.random() * 1000 - 1).toString(),
@@ -16,7 +25,16 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseInputData={saveExpenseInputDataHandler} />
+      {!editMode ? (
+        <button type="button" onClick={handleStartEdit}>
+          Add Expense
+        </button>
+      ) : (
+        <ExpenseForm
+          onSaveExpenseInputData={saveExpenseInputDataHandler}
+          onClick={handleEndEdit}
+        />
+      )}
     </div>
   );
 };

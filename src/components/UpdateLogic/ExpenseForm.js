@@ -2,16 +2,9 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  //   You can chose between individual state or agreegated.
   const [enteredTitle, setEnteredTitle] = useState(''); // Start with no values
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
-  // const [enteredFormData, setEnteredFormData] = useState('');
-  //   const [userInput, setUserInput] = useState({
-  //     enteredTitle: '',
-  //     setEnteredAmount: '',
-  //     setEnteredDate: '',
-  //   });
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -45,6 +38,11 @@ const ExpenseForm = (props) => {
     setEnteredDate('');
   };
 
+  const handleCancelForm = (event) => {
+    event.preventDefault();
+    props.onClick();
+  };
+
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="new-expense__controls">
@@ -71,13 +69,16 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2021-01-01"
-            max="2023-03-24"
+            max="2023-12-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={handleCancelForm}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
