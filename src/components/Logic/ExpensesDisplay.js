@@ -4,6 +4,7 @@ import './ExpensesDisplay.css';
 import Card from '../UI/Card';
 import ExpensesFilter from '../FilterLogic/ExpensesFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 const ExpensesDisplay = (props) => {
   const [yearChange, setYearChange] = useState('2022');
@@ -29,7 +30,7 @@ const ExpensesDisplay = (props) => {
           // Created below Event/wormhole to send it down beanstalk to fetch component Data
           onFilterYearData={dropDownFilterChange}
         />
-        <p>{yearChange}</p>
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList expensesItems={filteredExpenses} />
       </Card>
     </div>
