@@ -1,7 +1,6 @@
 import React, { useState } from 'react'; // You only need this for compatibility with old React Code
 import ExpensesDisplay from './components/Logic/ExpensesDisplay';
 import NewExpense from './components/UpdateLogic/NewExpense';
-import ExpensesChart from './components/Logic/ExpensesChart';
 
 const INITIAL_EXPENSES = [
   {
